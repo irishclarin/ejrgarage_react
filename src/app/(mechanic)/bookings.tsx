@@ -46,7 +46,11 @@ export default function MechanicBookings() {
       });
       if (!ok) return;
     }
-    run(() => api.updateJobStatus(Number(job.id), status), `Job marked ${status}.`);
+    const successMsg = status === 'Completed'
+      ? `Job completed! ${job.customer_name ?? 'Customer'} earned 50 points.`
+      : `Job marked ${status}.`;
+
+    run(() => api.updateJobStatus(Number(job.id), status), successMsg);
   }
 
   return (

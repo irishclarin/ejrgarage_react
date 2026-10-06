@@ -31,9 +31,13 @@ export default function AdminAppointments() {
   );
 
   function setStatus(a: Json, status: string, cancellationReply = '') {
+    const successMsg = status === 'Completed'
+      ? `Marked Completed! ${a.customer} earned 50 points.`
+      : `Marked ${status}.`;
+
     return run(
       () => api.manageAppointment({ appointmentId: Number(a.id), action: 'update_status', extra: { status, cancellation_reply: cancellationReply } }),
-      `Marked ${status}.`,
+      successMsg,
     );
   }
 

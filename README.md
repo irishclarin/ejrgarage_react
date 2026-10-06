@@ -6,6 +6,24 @@ React Native / Expo port of the Flutter `ejr_mobile` app. See **MIGRATION.md** f
 
 - [Vehicle Health](docs/VEHICLE_HEALTH.md) — mechanic inspection workflow, automatic scoring, customer view, and current data-storage behaviour.
 
+## Rewards System (EJR Points)
+
+The app features a loyalty pointing system for customers, similar to McDonald's Rewards.
+
+### Earning Points
+Customers earn EJR Points through:
+- **Completing a service / appointment**: Earn points when a job is marked as "Completed".
+- **Purchasing parts**: Earn points based on the total order value.
+- **Referring a new customer**: Rewards for growing the EJR community.
+- **Service Reviews**: Leave feedback after a job to earn points.
+- **Regular Maintenance**: Bonus points for keeping the vehicle in top condition.
+- **Birthday Rewards**: Special points granted on the user's birthday.
+- **Promotions**: Seasonal EJR Garage special events.
+
+### Implementation Details
+- **UI**: Customers view balance on Home/Profile and manage rewards in the **Rewards** screen.
+- **Backend Requirement**: The `users` table requires a `points` (INT) column. Backend scripts (e.g., `update_job_status.php`) should increment this value ONLY when a status becomes 'Completed'.
+
 ## Run it
 
 ```bash

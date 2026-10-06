@@ -73,6 +73,23 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        {/* Points Card - McDonald's Style */}
+        <Pressable
+          style={styles.pointsCard}
+          onPress={() => router.push('/(customer)/profile')} // Or a dedicated rewards page
+        >
+          <View style={styles.pointsLeft}>
+            <Text style={styles.pointsLabel}>My EJR Points</Text>
+            <Text style={styles.pointsValue}>{session.points}</Text>
+          </View>
+          <View style={styles.pointsRight}>
+            <View style={styles.pointsIconContainer}>
+              <Ionicons name="star" size={20} color={colors.white} />
+            </View>
+            <Text style={styles.pointsAction}>View Rewards</Text>
+          </View>
+        </Pressable>
+
         {/* Read-only search bar that jumps to the Booking tab, like Flutter's */}
         <Pressable style={styles.search} onPress={() => goTab('booking')}>
           <Ionicons name="search" size={22} color={colors.grey} />
@@ -170,6 +187,52 @@ function InlineError({ message, onRetry }: { message: string; onRetry: () => voi
 const styles = StyleSheet.create({
   rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   bell: { width: 44, height: 44, borderRadius: 12, borderWidth: 1, borderColor: colors.greyBorder, alignItems: 'center', justifyContent: 'center' },
+  pointsCard: {
+    marginTop: 24,
+    backgroundColor: colors.primary,
+    borderRadius: 20,
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+  pointsLeft: {
+    flex: 1,
+  },
+  pointsLabel: {
+    fontFamily: fonts.medium,
+    fontSize: 14,
+    color: 'rgba(255,255,255,0.8)',
+  },
+  pointsValue: {
+    fontFamily: fonts.bold,
+    fontSize: 32,
+    color: colors.white,
+    marginTop: 4,
+  },
+  pointsRight: {
+    alignItems: 'center',
+    gap: 8,
+  },
+  pointsIconContainer: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pointsAction: {
+    fontFamily: fonts.semibold,
+    fontSize: 12,
+    color: colors.white,
+    textDecorationLine: 'underline',
+  },
   search: {
     marginTop: 24,
     flexDirection: 'row',

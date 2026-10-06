@@ -52,6 +52,29 @@ export default function CustomerProfile() {
           </View>
           <Text style={[text.headingSmall, { marginTop: 14 }]}>{session.displayName}</Text>
           <Text style={[text.bodyMedium, { marginTop: 2 }]}>{session.email}</Text>
+
+          {/* Points Badge */}
+          <View style={{
+            marginTop: 16,
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: colors.primaryLight,
+            paddingHorizontal: 12,
+            paddingVertical: 6,
+            borderRadius: 20,
+            borderWidth: 1,
+            borderColor: colors.primary,
+          }}>
+            <Ionicons name="star" size={16} color={colors.primary} />
+            <Text style={{
+              marginLeft: 6,
+              fontFamily: fonts.semibold,
+              fontSize: 14,
+              color: colors.primary
+            }}>
+              {session.points} Points
+            </Text>
+          </View>
         </View>
 
         <View style={{ borderRadius: 16, borderWidth: 1, borderColor: colors.greyBorder, overflow: 'hidden', marginBottom: 28 }}>
